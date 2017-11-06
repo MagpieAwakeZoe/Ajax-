@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>json解析</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+<div>
+    <input type="text" value="" id="input">
+    <input type="submit" onclick="test()">
+</div>
+<script>
+    function test() {
+        $.ajax({
+            url:"https://bird.ioliu.cn/v1",
+            type: "post",
+            dataType: "json",
+            async: false,
+            contentType:"application/json",
+            jsonp:'callback',
+            success: function (data) {
+                alert(data.data.IP);
+                console.log(data)
+            },
+            error: function (error) {
+                alert("error");
+            }
+        });
+
+
+        $input = $("#input");
+        var input = $input.val();
+        alert(input);
+        // 匹配用户输入的ip和get到的ip是否完全一致,一致的话就弹出correct.
+        //ip:"61.153.34.115"
+        if (input == data.data.IP){
+            alert("Correct");
+        }
+    }
+</script>
+</body>
+</html>

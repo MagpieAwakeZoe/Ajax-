@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+<form action="" method="get">
+    <table>
+        <tr>
+            <td>用户名:</td>
+            <td><input type="text" id="username" placeholder="请输入用户名" value=""></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input type="text" id="password" placeholder="请输入密码" value=""></td>
+        </tr>
+        <tr>
+            <td>提交:</td>
+            <td><input type="submit" value="提交" id="submit" onclick="login()"></td>
+        </tr>
+    </table>
+</form>
+<script>
+//    $username = $("#username");
+//    $password = $("#password");
+//    $submit = $("#submit");
+function login() {
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    var submit = document.getElementById("submit");
+    if (username.value == "") {       //验证用户名是否为空
+        alert("请输入用户名！");
+    }
+    if (password.value == "") {       //验证密码是否为空
+        alert("请输入密码！");
+    }
+
+
+
+    //json数据
+    var jsons = '[{"id":"01","password":"111"},{"id":"02","password":"222"},{"id":"03","password":"333"}]';
+    var obj = JSON.parse(jsons);
+    $.each(obj,function () {
+//    alert(this.id);
+//    alert(this.password);
+        console.log(this.id);
+        console.log(this.password);
+        if(username.value == this.id &&password.value ==this.password){
+            alert("01,111");
+        }
+    })
+}
+
+
+
+
+
+
+//$.ajax({
+//    url: "../jsonData/login.json",
+//    type: "GET",
+//    dataType: "json",
+//    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',//防止乱码
+//
+//    success: function (data) {
+//        $.each(data.user, function () {
+//            var id = data.user[0].id;
+//            var password = data.user[0].password;
+//            if (id == username.value && password == password.value) {
+//                alert("aaaaaaaaaa！");
+//                console.log(data);
+//                window.location.href = "success.html";//跳转到主页
+//
+//
+//            } else {
+//                alert("您输入的用户名或密码有错！");
+//                return false;
+//            }
+//
+//        });
+//    },
+//    error: function (error) {
+//        alert("error");
+//    }
+//
+//});
+</script>
+</body>
+</html>
